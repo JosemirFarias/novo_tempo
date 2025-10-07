@@ -1,0 +1,27 @@
+/* Ajuste dos cards */
+.card img {
+    object-fit: cover;
+    height: 120px;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    background: url('/img/fundo.jpg') center/cover no-repeat;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #fff; /* ou use rgba(255,255,255,0.2) para ajustar a cor/transparência */
+    opacity: 0.2;     /* Ajuste para o efeito desejado */
+    z-index: 0;
+    pointer-events: none; /* Garante que elementos do body continuem clicáveis */
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
