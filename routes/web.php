@@ -6,6 +6,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/lider', function () {
+Route::get('/membro', function () {
     return view('leader.leader');
 });
