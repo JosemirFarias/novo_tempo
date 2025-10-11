@@ -1,36 +1,54 @@
 
-body {
-    position: relative;
-    min-height: 100vh;
-    background: url('/img/fundo.jpg') center/cover no-repeat;
-    overflow: hidden;
-}
-
-body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.2); 
-    opacity: 0.2;     
-    z-index: 0;
-    pointer-events: none; 
-}
-
-body > * {
-    position: relative;
-    z-index: 1;
-}
 
 .navbar {
     background-color: #dbdbdb;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(50px);
+    height: 90px;
+}
+
+.main-layout {
+    display: flex;              /* Cria o layout lado a lado */
+    min-height: 100vh;          /* Ocupa toda a altura da tela */
+    background-color: #f8f9fa;  /* Fundo claro opcional */
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 220px;               /* Largura da barra */
+    background-color: #002f43;  /* Cor de fundo */
+    color: white;
+    padding: 100px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h4 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 50px;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: #cb9835;
 }
 
 .main-content {
-    max-width: 1200px;
-    margin: 200px auto;
-    padding: 50px;
+    flex-grow: 1; 
+    padding: 100px;
     background-color: #dbdbdb;
     color: #000000;
     border-radius: 20px;
@@ -39,20 +57,58 @@ body > * {
 
 .card {
     border-radius: 20px;
+    height: 300px; /* altura fixa para igualar todos */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* mantém conteúdo bem distribuído */
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* efeito suave ao passar o mouse */
+.card:hover {
+    transform: translateY(-5px);
 }
 
 .card-img-container {
     width: 100%;
-    height: 220px;
+    height: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-color: #f8f9fa;
 }
 
 .card-img-top {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    display: block;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;  
 }
+
+/* --- CORPO DO CARD --- */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Título e texto */
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #555;
+    flex-grow: 1;
+}
+
+/* Botão centralizado */
+.card .btn {
+    margin-top: 10px;
+}
+

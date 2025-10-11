@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/membro', function () {
-    return view('leader.leader');
+    return view('member.member');
 });
