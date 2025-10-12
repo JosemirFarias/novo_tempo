@@ -8,15 +8,14 @@
 }
 
 .main-layout {
-    display: flex;              /* Cria o layout lado a lado */
-    min-height: 100vh;          /* Ocupa toda a altura da tela */
-    background-color: #f8f9fa;  /* Fundo claro opcional */
+    display: flex;              
+    min-height: 100vh;          
+    background-color: #f8f9fa; 
 }
 
-/* Barra lateral */
 .sidebar {
-    width: 220px;               /* Largura da barra */
-    background-color: #002f43;  /* Cor de fundo */
+    width: 220px;               
+    background-color: #002f43; 
     color: white;
     padding: 100px 10px;
     display: flex;
@@ -32,10 +31,6 @@
     padding: 50px;
 }
 
-.sidebar ul li {
-    margin: 10px 0;
-}
-
 .sidebar ul li a {
     color: white;
     text-decoration: none;
@@ -44,6 +39,29 @@
 
 .sidebar ul li a:hover {
     color: #cb9835;
+}
+
+@media (max-width: 700px) { 
+  .sidebar {
+    display: none !important;
+  }
+}
+
+.offcanvas.show ~ #sidebarToggleBtn {
+  display: none !important;
+}
+
+#sidebarToggleBtn {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  #sidebarToggleBtn {
+    display: block;
+  }
+  .sidebar {
+    display: none !important;
+  }
 }
 
 .main-content {
@@ -56,18 +74,23 @@
 }
 
 .card {
+    min-width: 180px;
+    max-width: 220px;
     border-radius: 20px;
-    height: 300px; /* altura fixa para igualar todos */
+    height: 250px; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* mantém conteúdo bem distribuído */
+    justify-content: space-between; 
     overflow: hidden;
     transition: transform 0.2s ease-in-out;
 }
 
-/* efeito suave ao passar o mouse */
 .card:hover {
     transform: translateY(-5px);
+}
+
+.card-link {
+  text-decoration: none;
 }
 
 .card-img-container {
@@ -86,7 +109,6 @@
     object-fit: contain;  
 }
 
-/* --- CORPO DO CARD --- */
 .card-body {
     display: flex;
     flex-direction: column;
@@ -95,10 +117,8 @@
     padding: 15px;
 }
 
-/* Título e texto */
 .card-title {
     font-size: 1.1rem;
-    margin-bottom: 0.4rem;
 }
 
 .card-text {
@@ -107,8 +127,11 @@
     flex-grow: 1;
 }
 
-/* Botão centralizado */
-.card .btn {
-    margin-top: 10px;
+@media (max-width: 900px) {
+  .card {
+    min-width: 150px;
+    max-width: 100%;
+  }
 }
+
 

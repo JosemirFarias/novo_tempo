@@ -9,7 +9,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
 </head>
 
 <body>
@@ -20,22 +22,24 @@
             <a class="navbar-brand" href="#">
                 <img src="/img/logo.png" alt="Logo" style="width: 80px;" class="rounded-circle">
             </a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item position-relative ms-4"> <!-- Sino -->
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-bell" style="font-size: 1.5rem;"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3
+                            <span class="visually-hidden">mensagens não lidas</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sair</a>
+                </li>
+            </ul>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar"
-                aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Perfil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sair</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
@@ -53,6 +57,31 @@
             </ul>
         </aside>
 
+        <!-- Offcanvas sidebar (só em telas pequenas, aberto pelo botão acima) -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas"
+            aria-labelledby="sidebarOffcanvasLabel">
+            <div class="offcanvas-header">
+                <h4 id="sidebarOffcanvasLabel">Menu</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Músicas</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Letras</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Cifras</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Escalas</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Botão para abrir o menu lateral (só em telas pequenas) -->
+        <button id="sidebarToggleBtn" class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas"
+            style="position: fixed; top: 100px; left: 10px; z-index: 1050;">
+            <i class="bi bi-list" style="font-size: 2rem;"></i>
+        </button>
+
         <!-- Main Content -->
         <main class="main-content flex-grow-1">
             <div class="container">
@@ -62,73 +91,78 @@
                 <div class="row justify-content-center g-3">
 
                     <!-- Card 1 -->
-                    <div class="col-md-2 col-sm-6 col-12">
-                        <div class="card shadow-sm border-0">
-                            <div class="card-img-container">
-                                <img class="card-img-top" src="/img/musica.png" alt="Card image">
+                    <div class="col">
+                        <a href="#" class="card card-link">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-img-container">
+                                    <img class="card-img-top" src="/img/musica.png" alt="Card image">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Músicas</h5>
+                                    <p class="card-text">Lista com músicas em formato MP3</p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Músicas</h5>
-                                <p class="card-text">Lista com músicas em formato MP3</p>
-                                <a href="#" class="btn btn-primary">Ver</a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="col-md-2 col-sm-6 col-12">
-                        <div class="card shadow-sm border-0">
-                            <div class="card-img-container">
-                                <img class="card-img-top" src="/img/texto.png" alt="Card image">
+                    <div class="col">
+                        <a href="#" class="card card-link">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-img-container">
+                                    <img class="card-img-top" src="/img/texto.png" alt="Card image">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Letras</h5>
+                                    <p class="card-text">Letras completas e adaptadas</p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Letras</h5>
-                                <p class="card-text">Letras completas e adaptadas</p>
-                                <a href="#" class="btn btn-primary">Ver</a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <!-- Card 3 -->
-                    <div class="col-md-2 col-sm-6 col-12">
-                        <div class="card shadow-sm border-0">
-                            <div class="card-img-container">
-                                <img class="card-img-top" src="/img/cifra.png" alt="Card image">
+                    <div class="col">
+                        <a href="#" class="card card-link">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-img-container">
+                                    <img class="card-img-top" src="/img/cifra.png" alt="Card image">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Cifras</h5>
+                                    <p class="card-text">Cifras completas e adaptadas</p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Cifras</h5>
-                                <p class="card-text">Cifras completas e adaptadas</p>
-                                <a href="#" class="btn btn-primary">Ver</a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <!-- card 4 -->
-                    <div class="col-md-2 col-sm-6 col-12">
-                        <div class="card shadow-sm border-0">
-                            <div class="card-img-container">
-                                <img class="card-img-top" src="/img/escala.png" alt="Card image">
+                    <div class="col">
+                        <a href="#" class="card card-link">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-img-container">
+                                    <img class="card-img-top" src="/img/escala.png" alt="Card image">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Escalas</h5>
+                                    <p class="card-text">Visualizar histórico de escalas</p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Escalas</h5>
-                                <p class="card-text">Visualizar histórico de escalas</p>
-                                <a href="#" class="btn btn-primary">Ver</a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <!-- card 5 -->
-                    <div class="col-md-2 col-sm-6 col-12">
-                        <div class="card shadow-sm border-0">
-                            <div class="card-img-container">
-                                <img class="card-img-top" src="/img/opiniao.png" alt="Card image">
+                    <div class="col">
+                        <a href="#" class="card card-link">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-img-container">
+                                    <img class="card-img-top" src="/img/opiniao.png" alt="Card image">
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Sujestões</h5>
+                                    <p class="card-text">Envie sua mensagem</p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Sujestões</h5>
-                                <p class="card-text">Envie sua mensagem</p>
-                                <a href="#" class="btn btn-primary">Ver</a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
