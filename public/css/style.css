@@ -1,54 +1,106 @@
 
 
-.navbar {
-    background-color: #dbdbdb;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(50px);
-    height: 90px;
-}
 
 .main-layout {
-    display: flex;              
-    min-height: 100vh;          
-    background-color: #f8f9fa; 
+  display: flex;              
+  min-height: 100vh;          
+  background-color: #f8f9fa; 
 }
 
 .sidebar {
-    width: 220px;               
-    background-color: #002f43; 
-    color: white;
-    padding: 100px 10px;
-    display: flex;
-    flex-direction: column;
+  width: 220px;               
+  background-color: #002f43; 
+  color: white;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar h4 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .sidebar ul {
-    list-style: none;
-    padding: 50px;
+  list-style: none;
+   
 }
 
 .sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+  padding: 10px 20px;
 }
 
 .sidebar ul li a:hover {
-    color: #cb9835;
+  color: #cb9835;
+}
+
+.menu-divider {
+  width: 100%;
+  margin: 20px 20;
+  border: none;
+  border-top: 1px solid white;
+  padding: 5px;
+}
+
+.bottom-menu a{
+  padding: 5px 20px;
+}
+
+.bottom-menu a:hover {
+  color: #cb9835;
+}
+
+.notification-bell {
+  position: relative;
+  display: inline-block;
+}
+
+.notification-bell .badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(30%, -30%);
+  font-size: 0.75rem;
+  padding: 0.35em 0.6em;
+}
+
+.offcanvas-head h4 {
+  margin-bottom: 20px;
+}
+
+.offcanvas-body ul {
+  list-style: none;
+   
+}
+
+.offcanvas-body ul li a {
+  color: #246ad0;
+  padding: 10px 20px;
+}
+
+.offcanvas-menu a {
+  color: #246ad0;
+  padding: 5px 20px;
 }
 
 @media (max-width: 700px) { 
   .sidebar {
-    display: none !important;
+   display: none !important;
   }
 }
 
 .offcanvas.show ~ #sidebarToggleBtn {
   display: none !important;
+}
+
+.offcanvas-divider {
+  width: 100%;
+  margin: 20px 20;
+  border: none;
+  border-top: 1px solid #002f43;
+  padding: 10px;
 }
 
 #sidebarToggleBtn {
@@ -66,11 +118,23 @@
 
 .main-content {
     flex-grow: 1; 
-    padding: 100px;
+    padding: 35px;
     background-color: #dbdbdb;
     color: #000000;
     border-radius: 20px;
     overflow: auto;
+}
+
+.main-divider {
+  width: 100%;
+  margin: 20px 20;
+  border: none;
+  border-top: 1px solid #002f43;
+}
+
+.main-content h2 {
+  margin-bottom: 20px;
+  color: #002f43;
 }
 
 .card {
