@@ -9,7 +9,7 @@
         <div class="row justify-content-center g-3">
             <!-- Card 1 -->
             <div class="col">
-                <a href="#" class="card card-link">
+                <a href="{{ route('music.index') }}" class="card card-link">
                     <div class="card shadow-sm border-0">
                         <div class="card-img-container">
                             <img class="card-img-top" src="/img/musica.png" alt="Card image">
