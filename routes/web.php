@@ -15,10 +15,8 @@ Route::get('/lider', function () {
     return view('leader.home');
 });
 
-Route::get('/nova_musica', [MusicController::class, 'create'])->name('music.create');
+// Music routes
+Route::get('/nova/musica', [MusicController::class, 'create'])->name('music.create');
 Route::get('/musicas', [MusicController::class, 'index'])->name('music.index');
-
-
-// corrigir erro de rota para o menu lateral
-// alternativa: retirar o sidebar do partials e colocar individualmente nas viwes leader e member
-// assim cada link será direcionado para a rota da view correta.
+Route::post('/musica', [MusicController::class, 'store'])->name('music.store');
+Route::get('/musica/{id}', [MusicController::class, 'show'])->name('music.show');

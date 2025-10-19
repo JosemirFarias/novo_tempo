@@ -75,7 +75,7 @@
                             <img class="card-img-top" src="/img/opiniao.png" alt="Card image">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Sujestões</h5>
+                            <h5 class="card-title">Sugestões</h5>
                             <p class="card-text">Envie sua mensagem</p>
                         </div>
                     </div>
