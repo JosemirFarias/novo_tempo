@@ -25,6 +25,7 @@
         @endif
 
         <h2>Músicas</h2>
+        <hr class="main-divider">
 
         <div class="mb-4">
             <a href="{{ route('music.create') }}"><button type="submit" class="btn btn-success">
@@ -33,33 +34,52 @@
             </a>
         </div>
 
-        <table class="table table-striped text-center">
+        <form action="{{ route('music.WeekList') }}" method="POST">
+            @csrf
 
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Banda</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($musics as $music)
+            <div class="mb-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-database-add"></i> Salvar Selecionadas
+                </button>
+            </div>
+
+            <table class="table table-striped text-center">
+
+                <thead>
                     <tr>
-                        <td>{{ $music->title }}</td>
-                        <td>{{ $music->version }}</td>
-
-                        <td>
-                            <a href="{{ route('music.show', ['id' => $music->id, 'type' => 'lyrics']) }}"
-                                class="btn btn-sm btn-primary">Ver Letra
-                            </a>
-                            <a href="{{ route('music.show', ['id' => $music->id, 'type' => 'lyrics_notes']) }}"
-                                class="btn btn-sm btn-secondary">Ver Cifra
-                            </a>
-                        </td>
+                        <th>Selecionar</th>
+                        <th>Título</th>
+                        <th>Versão</th>
+                        <th>Opções</th>
                     </tr>
-                @endforeach
-            </tbody>
+                </thead>
+                <tbody>
+                    @foreach ($musics as $music)
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="musics[]" value="{{ $music->id }}"
+                                    {{ $music->week_list ? 'checked' : '' }}>
+                            </td>
+                            <td>{{ $music->title }}</td>
+                            <td>{{ $music->version }}</td>
 
-        </table>
+                            <td>
+                                <a href="{{ route('music.show', ['id' => $music->id, 'type' => 'lyrics']) }}"
+                                    class="btn btn-sm btn-primary"><i class="bi bi-eye-fill"></i> Ver Letra
+                                </a>
+                                <a href="{{ route('music.show', ['id' => $music->id, 'type' => 'lyrics_notes']) }}"
+                                    class="btn btn-sm btn-secondary"><i class="bi bi-eye-fill"></i> Ver Cifra
+                                </a>
+                                <a href="#" class="btn btn-sm btn-info"><i class="bi bi-play-fill"></i> Ouvir</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
+
+        </form>
+
     </div>
 
 @endsection

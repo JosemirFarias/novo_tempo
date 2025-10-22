@@ -137,6 +137,11 @@
   color: #002f43;
 }
 
+ h4 {
+  margin-bottom: 20px;
+  color: #002f43;
+}
+
 .card {
     min-width: 180px;
     max-width: 220px;

@@ -3,7 +3,7 @@
     <hr class="menu-divider">
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a href="#" class="nav-link"><i class="bi bi-house-fill"></i> Início</a>
+            <a href="{{ route('leader.home') }}" class="nav-link"><i class="bi bi-house-fill"></i> Início</a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
@@ -12,22 +12,12 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="bi bi-file-text"></i> Letras
+                <i class="bi bi-list-ol"></i> Escala
             </a>
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="bi bi-music-note-list"></i> Cifras
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="bi bi-list-ol"></i> Escalas
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="bi bi-chat-left-text"></i> Sujestões
+                <i class="bi bi-chat-left-text"></i> Sugestões
             </a>
         </li>
         <li class="nav-item">
@@ -70,22 +60,12 @@
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="bi bi-file-text"></i> Letras
+                    <i class="bi bi-list-ol"></i> Escala
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="bi bi-music-note-list"></i> Cifras
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-list-ol"></i> Escalas
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="bi bi-chat-left-text"></i> Sujestões
+                    <i class="bi bi-chat-left-text"></i> Sugestões
                 </a>
             </li>
             <li class="nav-item">

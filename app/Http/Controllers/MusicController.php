@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Music;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,7 @@ class MusicController extends Controller
 
         Music::create($request->all());
 
-        return redirect()->route('music.index')->with('success', 'Música adicionada');
+        return redirect()->route('music.index')->with('success', 'Música adicionada!');
     }
 
     public function show(string $id)
@@ -38,5 +39,43 @@ class MusicController extends Controller
         $music = Music::findOrFail($id);
         $type = request()->query('type', 'lyrics');
         return view('music.show', compact('music', 'type'));
+    }
+
+    public function downloadLyricsPdf($id)
+    {
+        $music = Music::findOrFail($id);
+
+        $pdf = Pdf::loadView('music.pdf', [
+            'title' => $music->title,
+            'version' => $music->version,
+            'content' => $music->lyrics,
+            'type' => 'Letra'
+        ]);
+
+        return $pdf->download("{$music->title}_letra.pdf");
+    }
+
+    public function downloadLyrics_notesPDF($id)
+    {
+        $music = Music::findOrFail($id);
+        $pdf = Pdf::loadView('music.pdf', [
+            'title' => $music->title,
+            'version' => $music->version,
+            'content' => $music->lyrics_notes,
+            'type' => 'Cifra'
+        ]);
+        return $pdf->download("{$music->title}_cifra.pdf");
+    }
+
+    public function WeekList(Request $request)
+    {
+        // Desmarca todas primeiro
+        Music::query()->update(['week_list' => false]);
+
+        // Marca apenas as selecionadas
+        $ids = $request->input('musics', []);
+        Music::whereIn('id', $ids)->update(['week_list' => true]);
+
+        return redirect()->back()->with('success', 'Lista da semana atualizada!');
     }
 }

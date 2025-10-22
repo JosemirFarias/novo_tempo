@@ -6,6 +6,7 @@
 
     <div class="container mt-4">
         <h2>Adicionar Nova Música</h2>
+        <hr class="main-divider">
 
         <form action="{{ route('music.store') }}" method="POST">
             @csrf
