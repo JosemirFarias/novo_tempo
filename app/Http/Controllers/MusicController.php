@@ -9,9 +9,16 @@ use Illuminate\Http\Request;
 class MusicController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $musics = Music::all();
+        $q = trim($request->input('q', ''));
+
+        $musics = Music::when($q !== '', function ($query) use ($q) {
+            $term = '%' . $q . '%';
+            $query->where('title', 'ILIKE', $term)
+                ->orWhere('version', 'ILIKE', $term);
+        })->orderBy('title')->get();
+
         return view('music.index', compact('musics'));
     }
 
@@ -31,7 +38,7 @@ class MusicController extends Controller
 
         Music::create($request->all());
 
-        return redirect()->route('music.index')->with('success', 'Música adicionada!');
+        return redirect()->route('music.index')->with('success', 'Música Adicionada!');
     }
 
     public function show(string $id)
@@ -76,6 +83,36 @@ class MusicController extends Controller
         $ids = $request->input('musics', []);
         Music::whereIn('id', $ids)->update(['week_list' => true]);
 
-        return redirect()->back()->with('success', 'Lista da semana atualizada!');
+        return redirect()->back()->with('success', 'Lista da Semana Atualizada!');
+    }
+
+    public function edit(string $id)
+    {
+        $music = Music::findOrFail($id);
+        return view('music.edit', compact('music'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'title' => 'required',
+            'version' => 'required',
+            'lyrics' => 'required',
+            'lyrics_notes' => 'required',
+        ]);
+
+        $music = Music::findOrFail($id);
+        $music->update($request->all());
+
+        return redirect()->route('music.index')->with('success', 'Música Atualizada!');
+    }
+
+    public function destroy(string $id)
+    {
+        $music = Music::findOrFail($id);
+        $music->delete();
+
+        return redirect()->route('music.index')
+            ->with('success', 'Música Excluida!');
     }
 }

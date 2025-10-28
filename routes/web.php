@@ -23,3 +23,6 @@ Route::get('/musica/{id}', [MusicController::class, 'show'])->name('music.show')
 Route::get('/letra/{id}/pdf', [MusicController::class, 'downloadLyricsPdf'])->name('music.pdf.lyrics');
 Route::get('/cifra/{id}/pdf', [MusicController::class, 'downloadLyrics_notesPdf'])->name('music.pdf.lyrics_notes');
 Route::post('/musicas/lista-semana', [MusicController::class, 'WeekList'])->name('music.WeekList');
+Route::get('/musica/{id}/editar', [MusicController::class, 'edit'])->name('music.edit');
+Route::put('/musica/{id}', [MusicController::class, 'update'])->name('music.update');
+Route::delete('/musica/{id}', [MusicController::class, 'destroy'])->name('music.destroy');

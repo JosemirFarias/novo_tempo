@@ -1,0 +1,39 @@
+
+
+.menu-opcoes {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-menu {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+    color: #444;
+}
+
+.btn-menu:hover {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.menu-card {
+    position: absolute;
+    right: 0;
+    top: 28px;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+.menu-opcoes summary::-webkit-details-marker {
+    display: none;
+}
+
+.menu-opcoes[open] .btn-menu {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+

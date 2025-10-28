@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h2 class="mb-4">Conteúdos</h2>
+        <h2 class="mb-4"><i class="bi bi-body-text"></i> Conteúdos</h2>
         <hr class="main-divider">
 
         <div class="row mb-5">

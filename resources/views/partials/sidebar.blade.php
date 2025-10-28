@@ -1,12 +1,12 @@
 <aside class="sidebar">
-    <h4>Menu</h4>
+    <h4 style="color: white">Menu</h4>
     <hr class="menu-divider">
     <ul class="nav flex-column">
         <li class="nav-item">
             <a href="{{ route('leader.home') }}" class="nav-link"><i class="bi bi-house-fill"></i> Início</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('music.index') }}" class="nav-link">
                 <i class="bi bi-music-player"></i> Músicas
             </a>
         </li>
@@ -49,12 +49,12 @@
     <div class="offcanvas-body">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('leader.home') }}" class="nav-link">
                     <i class="bi bi-house-fill"></i> Início
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('music.index') }}" class="nav-link">
                     <i class="bi bi-music-player"></i> Músicas
                 </a>
             </li>

@@ -29,5 +29,15 @@
             @endif
 
         </div>
+
+        <form action="{{ route('music.destroy', $music->id) }}" method="POST"
+            onsubmit="return confirm('Deseja excluir essa música?')" class="m-0 mt-1">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger">
+                <i class="bi bi-trash3"></i> Excluir
+            </button>
+        </form>
+
     </div>
 @endsection
