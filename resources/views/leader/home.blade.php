@@ -29,19 +29,26 @@
             <div class="col-md-6 mb-4">
                 <h4><i class="bi bi-megaphone"></i> Avisos</h4>
                 <ul class="list-group mt-3">
-                    <li class="list-group-item"
-                        style="border-left:none; border-right:none; border-radius:0; padding:10px 15px;">
-                        Ensaio geral na sexta-feira às 19h.
-                    </li>
-                    <li class="list-group-item"
-                        style="border-left:none; border-right:none; border-radius:0; padding:10px 15px;">
-                        Reunião de líderes no domingo.
-                    </li>
-                    <li class="list-group-item"
-                        style="border-left:none; border-right:none; border-radius:0; padding:10px 15px;">
-                        Enviar sugestões de músicas até quinta-feira.
-                    </li>
+                    @if ($warnings->isEmpty())
+                        <li class="list-group-item text-muted text-center">
+                            Nenhum aviso publicado ainda.
+                        </li>
+                    @else
+                        @foreach ($warnings as $warning)
+                            <li class="list-group-item"
+                                style="border-left:none; border-right:none; border-radius:0; padding:10px 15px;">
+                                <strong>{{ $warning->title }}</strong>
+                                @if ($warning->content)
+                                    <p class="mb-0 text-muted">{{ $warning->content }}</p>
+                                @endif
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
+                <div class="d-flex justify-content-end mt-4">
+                    <a href="{{ route('warning.create') }}"><button type="submit" class="btn btn-success">Criar
+                            Aviso</button></a>
+                </div>
             </div>
 
             <div class="col-md-6">

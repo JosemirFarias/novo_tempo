@@ -10,24 +10,6 @@
 
     <div class="container mt-4">
 
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                <strong>{{ session('success') }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-
-            <script>
-                // Fecha automaticamente após 3 segundos
-                setTimeout(() => {
-                    let alert = document.querySelector('.alert');
-                    if (alert) {
-                        let bsAlert = new bootstrap.Alert(alert);
-                        bsAlert.close();
-                    }
-                }, 3000);
-            </script>
-        @endif
-
         <nav class="navbar">
             <div class="container-fluid">
                 <h2><i class="bi bi-music-note-beamed"></i> Músicas</h2>

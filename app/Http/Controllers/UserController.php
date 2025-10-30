@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Music;
+use App\Models\Warning;
 
 class UserController extends Controller
 {
     public function index()
     {
         $musicWeek = Music::where('week_list', true)->get();
-        return view('leader.home', compact('musicWeek'));
+        $warnings = Warning::latest()->get();
+
+        return view('leader.home', compact('musicWeek', 'warnings'));
     }
 }

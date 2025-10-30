@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\WarningController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,8 +17,8 @@ Route::get('/membro', function () {
 Route::get('/lider', [UserController::class, 'index'])->name('leader.home');
 
 // Music
-Route::get('/nova/musica', [MusicController::class, 'create'])->name('music.create');
 Route::get('/musicas', [MusicController::class, 'index'])->name('music.index');
+Route::get('/nova/musica', [MusicController::class, 'create'])->name('music.create');
 Route::post('/musica', [MusicController::class, 'store'])->name('music.store');
 Route::get('/musica/{id}', [MusicController::class, 'show'])->name('music.show');
 Route::get('/letra/{id}/pdf', [MusicController::class, 'downloadLyricsPdf'])->name('music.pdf.lyrics');
@@ -26,3 +27,7 @@ Route::post('/musicas/lista-semana', [MusicController::class, 'WeekList'])->name
 Route::get('/musica/{id}/editar', [MusicController::class, 'edit'])->name('music.edit');
 Route::put('/musica/{id}', [MusicController::class, 'update'])->name('music.update');
 Route::delete('/musica/{id}', [MusicController::class, 'destroy'])->name('music.destroy');
+
+// Warnings
+Route::get('/novo/aviso', [WarningController::class, 'create'])->name('warning.create');
+Route::post('/warning', [WarningController::class, 'store'])->name('warning.store');
