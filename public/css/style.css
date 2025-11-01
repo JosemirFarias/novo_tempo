@@ -52,20 +52,6 @@
   color: #cb9835;
 }
 
-.notification-bell {
-  position: relative;
-  display: inline-block;
-}
-
-.notification-bell .badge {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(30%, -30%);
-  font-size: 0.75rem;
-  padding: 0.35em 0.6em;
-}
-
 .offcanvas-head h4 {
   margin-bottom: 20px;
 }

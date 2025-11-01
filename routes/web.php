@@ -31,3 +31,7 @@ Route::delete('/musica/{id}', [MusicController::class, 'destroy'])->name('music.
 // Warnings
 Route::get('/novo/aviso', [WarningController::class, 'create'])->name('warning.create');
 Route::post('/warning', [WarningController::class, 'store'])->name('warning.store');
+Route::get('/aviso/{id}', [WarningController::class, 'show'])->name('warning.show');
+Route::get('/aviso/{id}/editar', [WarningController::class, 'edit'])->name('warning.edit');
+Route::put('/aviso/{id}', [WarningController::class, 'update'])->name('warning.update');
+Route::delete('/aviso/{id}', [WarningController::class, 'destroy'])->name('warning.destroy');

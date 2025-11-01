@@ -28,13 +28,6 @@
     </ul>
     <hr class="menu-divider">
     <div class="bottom-menu">
-        <div class="notification-bell">
-            <a class="nav-link" href="#"><i class="bi bi-bell" style="font-size: 1.5rem;"></i>
-                <span class="badge rounded-pill bg-danger">3
-                    <span class="visually-hidden">mensagens não lidas</span>
-                </span>
-            </a>
-        </div>
         <a href="#" class="nav-link"><i class="bi bi-person-vcard"></i> Perfil</a>
         <a href="#" class="nav-link"><i class="bi bi-box-arrow-left"></i> Sair</a>
     </div>
@@ -78,15 +71,6 @@
         <hr class="offcanvas-divider">
 
         <div class="offcanvas-menu">
-            <div class="notification-bell">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-bell" style="font-size: 1.5rem;"></i>
-                    <span class="badge rounded-pill bg-danger">
-                        3
-                        <span class="visually-hidden">mensagens não lidas</span>
-                    </span>
-                </a>
-            </div>
             <a href="#" class="nav-link">
                 <i class="bi bi-person-vcard"></i> Perfil
             </a>

@@ -7,13 +7,6 @@ use Illuminate\Http\Request;
 
 class WarningController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -43,7 +36,8 @@ class WarningController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $warning = Warning::findOrFail($id);
+        return view('warning.show', compact('warning'));
     }
 
     /**
@@ -51,7 +45,8 @@ class WarningController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $warning = Warning::findOrFail($id);
+        return view('warning.edit', compact('warning'));
     }
 
     /**
@@ -59,7 +54,15 @@ class WarningController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        $warning = Warning::findOrFail($id);
+        $warning::update($request->all());
+
+        return redirect()->route('leader.home')->with('success', 'Aviso Editado!');
     }
 
     /**
@@ -67,6 +70,9 @@ class WarningController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $warning = Warning::findOrFail($id);
+        $warning->delete();
+
+        return redirect()->route('leader.home')->with('success', 'Aviso Excluído!');
     }
 }
