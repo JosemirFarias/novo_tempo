@@ -8,50 +8,51 @@
         <hr class="main-divider">
 
         <div class="row mb-5">
-            <div class="col-md-6 mb-4">
-                <h4><i class="bi bi-music-note-beamed"></i> Lista de músicas da Semana</h4>
 
-                <ul class="list-group mt-3">
-                    @if ($musicWeek->isEmpty())
-                        <li class="list-group-item text-muted text-center">Nenhuma música selecionada para esta semana.</li>
-                    @else
-                        @foreach ($musicWeek as $music)
-                            <li class="list-group-item d-flex justify-content-between align-items-center"
-                                style="border-left:none; border-right:none; border-radius:0; padding:10px 15px;">
-                                <span>{{ $music->title }}</span>
-                                <small class="text-muted">{{ $music->version }}</small>
-                            </li>
-                        @endforeach
-                    @endif
-                </ul>
-            </div>
+            <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <h4 class="mb-0"><i class="bi bi-megaphone"></i> Avisos</h4>
+                    <a href="{{ route('warning.create') }}"><button type="button" class="btn btn-success">Criar
+                            Aviso</button></a>
+                </div>
 
-            <div class="col-md-6 mb-4">
-                <h4><i class="bi bi-megaphone"></i> Avisos</h4>
-                <ul class="list-group mt-3">
+                <div class="list-group mt-3">
                     @if ($warnings->isEmpty())
-                        <li class="list-group-item text-muted text-center">
-                            Nenhum aviso publicado ainda.
-                        </li>
+                        <a href="#" class="list-group-item list-group-item-action">Nenhum aviso publicado.</a>
                     @else
                         @foreach ($warnings as $warning)
-                            <li class="list-group-item"
-                                style="border-left:none; border-right:none; border-radius:0; padding:10px 15px;">
+                            <a href="{{ route('warning.show', $warning->id) }}"
+                                class="list-group-item list-group-item-action">
                                 <strong>{{ $warning->title }}</strong>
                                 @if ($warning->content)
                                     <p class="mb-0 text-muted">{{ $warning->content }}</p>
                                 @endif
-                            </li>
+                            </a>
                         @endforeach
                     @endif
-                </ul>
-                <div class="d-flex justify-content-end mt-4">
-                    <a href="{{ route('warning.create') }}"><button type="submit" class="btn btn-success">Criar
-                            Aviso</button></a>
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 mb-4">
+                <h4><i class="bi bi-music-note-beamed"></i> Lista de músicas da Semana</h4>
+
+                <div class="list-group mt-3">
+                    @if ($musicWeek->isEmpty())
+                        <a href="#" class="list-group-item list-group-item-action">Nenhuma música selecionada para
+                            esta semana.</a>
+                    @else
+                        @foreach ($musicWeek as $music)
+                            <a href="{{ route('music.index') }}"
+                                class="list-group-item list-group-item-action d-flex justify-content-between">
+                                <span>{{ $music->title }}</span>
+                                <small class="text-muted">{{ $music->version }}</small>
+                            </a>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
                 <h4><i class="bi bi-list-ol"></i> Escala da Semana</h4>
                 <ul class="list-group mt-3">
                     <li class="list-group-item"

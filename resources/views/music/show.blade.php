@@ -8,19 +8,19 @@
         <hr class="main-divider">
 
         <!-- Exibir o conteúdo escolhido -->
-        <div class="container mb-3">
+        <div class="mb-4">
 
             @if ($type === 'lyrics')
-                <h4>Letra</h4>
-                <div class="mb-2 text-end">
+                <div class="mb-2 d-flex justify-content-between mt-4">
+                    <h4 class="mb-0">Letra</h4>
                     <a href="{{ route('music.pdf.lyrics', $music->id) }}" class="btn btn-danger">
                         <i class="bi bi-file-earmark-pdf"></i> Baixar PDF
                     </a>
                 </div>
                 <pre>{{ $music->lyrics }}</pre>
             @elseif($type === 'lyrics_notes')
-                <h4>Cifra</h4>
-                <div class="mb-2 text-end">
+                <div class="mb-2 d-flex justify-content-between mt-4">
+                    <h4 class="mb-0">Cifra</h4>
                     <a href="{{ route('music.pdf.lyrics_notes', $music->id) }}" class="btn btn-danger">
                         <i class="bi bi-file-earmark-pdf"></i> Baixar PDF
                     </a>

@@ -60,7 +60,7 @@ class WarningController extends Controller
         ]);
 
         $warning = Warning::findOrFail($id);
-        $warning::update($request->all());
+        $warning->update($request->all());
 
         return redirect()->route('leader.home')->with('success', 'Aviso Editado!');
     }
