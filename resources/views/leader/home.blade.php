@@ -107,7 +107,7 @@
 
             <!-- card 3 -->
             <div class="col">
-                <a href="#" class="card card-link">
+                <a href="{{ route('suggestion.index') }}" class="card card-link">
                     <div class="card shadow-sm border-0">
                         <div class="card-img-container">
                             <img class="card-img-top" src="/img/suggestions.png" alt="Card image">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\WarningController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,12 @@ Route::get('/aviso/{id}', [WarningController::class, 'show'])->name('warning.sho
 Route::get('/aviso/{id}/editar', [WarningController::class, 'edit'])->name('warning.edit');
 Route::put('/aviso/{id}', [WarningController::class, 'update'])->name('warning.update');
 Route::delete('/aviso/{id}', [WarningController::class, 'destroy'])->name('warning.destroy');
+
+// Suggestion
+Route::get('/sugestoes', [SuggestionController::class, 'index'])->name('suggestion.index');
+Route::get('/enviar/sugestao', [SuggestionController::class, 'create'])->name('suggestion.create');
+Route::post('/sugestao', [SuggestionController::class, 'store'])->name('suggestion.store');
+Route::get('/sugestao/{id}', [SuggestionController::class, 'show'])->name('suggestion.show');
+Route::get('/sugestao/{id}/editar', [SuggestionController::class, 'edit'])->name('suggestion.edit');
+Route::put('/sugestao/{id}', [SuggestionController::class, 'update'])->name('suggestion.update');
+Route::delete('/sugestao/{id}', [SuggestionController::class, 'destroy'])->name('suggestion.destroy');

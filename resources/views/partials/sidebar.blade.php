@@ -16,7 +16,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('suggestion.index') }}" class="nav-link">
                 <i class="bi bi-chat-left-text"></i> Sugestões
             </a>
         </li>
@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('suggestion.index') }}" class="nav-link">
                     <i class="bi bi-chat-left-text"></i> Sugestões
                 </a>
             </li>

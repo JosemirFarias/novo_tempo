@@ -23,7 +23,7 @@
         <hr class="main-divider">
 
         <div class="mb-4">
-            <a href="{{ route('music.create') }}"><button type="submit" class="btn btn-success">
+            <a href="{{ route('music.create') }}"><button type="submit" class="btn btn-primary">
                     <i class="bi bi-database-add"></i> Adicionar Nova Música
                 </button>
             </a>
