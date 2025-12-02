@@ -45,3 +45,13 @@ Route::get('/sugestao/{id}', [SuggestionController::class, 'show'])->name('sugge
 Route::get('/sugestao/{id}/editar', [SuggestionController::class, 'edit'])->name('suggestion.edit');
 Route::put('/sugestao/{id}', [SuggestionController::class, 'update'])->name('suggestion.update');
 Route::delete('/sugestao/{id}', [SuggestionController::class, 'destroy'])->name('suggestion.destroy');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
