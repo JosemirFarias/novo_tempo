@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Página inicial de líderes')
+@section('title', 'Página inicial')
 
 @section('content')
+
     <div class="container">
         <h2 class="mb-4"><i class="bi bi-body-text"></i> Conteúdos</h2>
         <hr class="main-divider">
