@@ -1,20 +1,24 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WarningController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\SuggestionController;
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return redirect()->route('home');
+    }
+    return view('auth.login');
 });
 
 // Rotas acessíveis por qualquer pessoa logada
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -22,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Home
-    Route::get('/lider', [UserController::class, 'index'])->name('leader.home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Warnings
     Route::get('/aviso/{id}', [WarningController::class, 'show'])->name('warning.show');

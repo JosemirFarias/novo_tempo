@@ -28,7 +28,7 @@ class WarningController extends Controller
 
         Warning::create($request->all());
 
-        return redirect()->route('leader.home')->with('success', 'Aviso Pulblicado!');
+        return redirect()->route('home')->with('success', 'Aviso Pulblicado!');
     }
 
     /**
@@ -62,7 +62,7 @@ class WarningController extends Controller
         $warning = Warning::findOrFail($id);
         $warning->update($request->all());
 
-        return redirect()->route('leader.home')->with('success', 'Aviso Editado!');
+        return redirect()->route('home')->with('success', 'Aviso Editado!');
     }
 
     /**
@@ -73,6 +73,6 @@ class WarningController extends Controller
         $warning = Warning::findOrFail($id);
         $warning->delete();
 
-        return redirect()->route('leader.home')->with('success', 'Aviso Excluído!');
+        return redirect()->route('home')->with('success', 'Aviso Excluído!');
     }
 }

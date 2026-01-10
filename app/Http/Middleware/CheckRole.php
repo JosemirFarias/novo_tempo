@@ -14,12 +14,26 @@ class CheckRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        // Se não estiver logado ou o cargo for diferente do exigido
-        if (!Auth::check() || Auth::user()->role !== $role) {
-            abort(403, 'Acesso restrito!');
+        // Se o usuário não estiver logado, manda para o login
+        if (!Auth::check()) {
+            return redirect('login');
         }
-        return $next($request);
+
+        $user = Auth::user();
+
+        // Se o usuário for 'admin', ele SEMPRE passa, não importa a rota
+        if ($user->role === 'admin') {
+            return $next($request);
+        }
+
+        // Se a rota exige 'lider' e o usuário logado é 'lider', ele passa
+        if (in_array($user->role, $roles)) {
+            return $next($request);
+        }
+
+        // Se não for nenhum dos dois, aborta com erro 403 (Acesso Restrito)
+        abort(403, 'Acesso não autorizado.');
     }
 }

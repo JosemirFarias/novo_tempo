@@ -13,8 +13,10 @@
             <div class="mb-4">
                 <div class="d-flex justify-content-between align-items-center mt-4">
                     <h4 class="mb-0"><i class="bi bi-megaphone"></i> Avisos</h4>
-                    <a href="{{ route('warning.create') }}"><button type="button" class="btn btn-success">Criar
-                            Aviso</button></a>
+                    @if (auth()->user()->role === 'lider' || auth()->user()->role === 'admin')
+                        <a href="{{ route('warning.create') }}"><button type="button" class="btn btn-success">Criar
+                                Aviso</button></a>
+                    @endif
                 </div>
 
                 <div class="list-group mt-3">
