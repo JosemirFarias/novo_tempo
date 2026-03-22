@@ -21,6 +21,7 @@
             </div>
         </nav>
         <hr class="main-divider">
+        <br>
 
         @if (auth()->user()->role === 'lider' || auth()->user()->role === 'admin')
             <div class="mb-4">
