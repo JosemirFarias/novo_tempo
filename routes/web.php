@@ -50,8 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/sugestao/{id}', [SuggestionController::class, 'update'])->name('suggestion.update');
     Route::delete('/sugestao/{id}', [SuggestionController::class, 'destroy'])->name('suggestion.destroy');*/
 
-    // User
-    Route::post('/membros', [UserController::class, 'scale'])->name('user.scale');
+    // Scale
+
 });
 
 // Rotas que SÓ o LIDER e o ADMIN podem ver
@@ -79,7 +79,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // Users
     Route::resource('user', UserController::class);
-    Route::post('/user/scale', [UserController::class, 'scale'])->name('user.scale');
 });
 
 require __DIR__ . '/auth.php';
