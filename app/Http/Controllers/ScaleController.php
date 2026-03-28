@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Scale;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ScaleController extends Controller
@@ -12,13 +14,12 @@ class ScaleController extends Controller
      */
     public function index()
     {
-        // Busca usuários que têm alguma data na coluna month_scale
-        // Agrupa os resultados pela data para facilitar a exibição
-        $selected = User::whereNotNull('month_scale')
+        $scales = Scale::with('user')
+            ->orderBy('date', 'asc')
             ->get()
-            ->groupBy('month_scale'); // Agrupa por data
+            ->groupBy('date');
 
-        return view('scale.index', compact('selected'));
+        return view('scale.index', compact('scales'));
     }
 
     /**
@@ -26,7 +27,9 @@ class ScaleController extends Controller
      */
     public function create()
     {
-        //
+        $users = \App\Models\User::all();
+
+        return view('scale.create', compact('users'));
     }
 
     /**
@@ -34,20 +37,37 @@ class ScaleController extends Controller
      */
     public function store(Request $request)
     {
-        // 1. Resetar todos os usuários (limpa a escala anterior)
-        User::query()->update(['month_scale' => null]);
+        $request->validate([
+            'datas' => 'required|array',
+            'datas.*' => 'required|date',
+            'equipe' => 'required|array'
+        ]);
 
-        // 2. O request virá como um array onde a chave é a data e o valor são os IDs
-        // Ex: escala['2026-03-03'] => [1, 5, 8]
-        if ($request->has('escala')) {
-            foreach ($request->escala as $data => $userIds) {
-                User::whereIn('id', $userIds)
-                    ->update(['month_scale' => $data]);
-            }
+        try {
+            DB::transaction(function () use ($request) {
+                Scale::query()->delete();
+
+                foreach ($request->datas as $index => $dateValue) {
+
+                    if (isset($request->equipe[$index])) {
+
+                        foreach ($request->equipe[$index] as $userId) {
+                            Scale::create([
+                                'user_id' => $userId,
+                                'date'    => $dateValue
+                            ]);
+                        }
+                    }
+                }
+            });
+
+            return redirect()->route('scale.index')
+                ->with('success', 'Escala do mês publicada com sucesso!');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Erro ao salvar escala: ' . $e->getMessage());
         }
-
-        return back()->with('success', 'Escala de 4 datas criada!');
     }
+
 
     /**
      * Display the specified resource.

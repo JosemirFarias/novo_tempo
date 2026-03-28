@@ -5,47 +5,41 @@
 @section('content')
 
     <div class="container mt-4">
-
-        <h2><i class="bi bi-chat-text"></i> Lista de Membros</h2>
+        <h2><i class="bi bi-people"></i> Lista de Membros</h2>
         <hr class="main-divider">
         <br>
 
-        @if (auth()->user()->role === 'lider' || auth()->user()->role === 'admin')
-            <form action="{{ route('user.scale') }}" method="POST">
-                @csrf
-
-                <div class="mb-4">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-database-add"></i> Salvar Selecionados
-                    </button>
-                </div>
-        @endif
-
-        <table class="table table-striped text-center">
-
-            <thead>
+        <table class="table table-bordered table-hover text-center">
+            <thead class="table-light">
                 <tr>
-                    <th>Selecionar</th>
                     <th>Nome</th>
-                    <th>Opções</th>
+                    <th>Função</th> {{-- Adicionei a coluna para ficar mais completo --}}
                 </tr>
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="users[]" value="{{ $user->id }}">
-                        </td>
+                    {{-- Adicionamos a classe 'user-row' e o atributo com a rota --}}
+                    <tr class="user-row" data-href="{{ route('user.show', $user->id) }}" style="cursor: pointer;">
                         <td>{{ $user->name }}</td>
-                        <td>
-                            <a href="" class="btn btn-outline-info btn-sm">Dados</a>
-                            </details>
-                        </td>
+                        <td>{{ $user->function ?? '--' }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        </form>
     </div>
+
+    {{-- Script para fazer o redirecionamento --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('.user-row');
+
+            rows.forEach(row => {
+                row.addEventListener('click', function() {
+                    // Pega a URL do atributo data-href e redireciona o navegador
+                    window.location.href = this.dataset.href;
+                });
+            });
+        });
+    </script>
 
 @endsection

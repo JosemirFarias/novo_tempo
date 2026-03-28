@@ -1,0 +1,28 @@
+.table-responsive {
+    max-height: 350px; /* Altura que você desejar */
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+}
+
+/* Garante que o cabeçalho (thead) fique fixo no topo ao rolar */
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa; /* Cor de fundo do cabeçalho */
+    z-index: 10;
+    border-bottom: 2px solid #dee2e6;
+}
+
+/* Estilização dos blocos de cada data */
+.scale-table-wrapper {
+    background-color: #ffffff;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Realça a tabela ao passar o mouse sobre a LINHA */
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05) !important;
+    cursor: pointer;
+}

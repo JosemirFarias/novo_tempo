@@ -95,7 +95,7 @@
 
             <!-- card 2 -->
             <div class="col">
-                <a href="{{ route('user.scale') }}" class="card card-link">
+                <a href="{{ route('scale.index') }}" class="card card-link">
                     <div class="card shadow-sm border-0">
                         <div class="card-img-container">
                             <img class="card-img-top" src="/img/scales.png" alt="Card image">
@@ -133,6 +133,21 @@
                         <div class="card-body">
                             <h5 class="card-title">Imagens</h5>
                             <p class="card-text">Momentos registrados</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- card 5 -->
+            <div class="col">
+                <a href="{{ route('user.index') }}" class="card card-link">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-img-container">
+                            <img class="card-img-top" src="/img/texts.png" alt="Card image">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Lista de Membros</h5>
+                            <p class="card-text">Gerenciamento de usuários</p>
                         </div>
                     </div>
                 </a>

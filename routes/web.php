@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WarningController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\ScaleController;
 use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
@@ -51,7 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/sugestao/{id}', [SuggestionController::class, 'destroy'])->name('suggestion.destroy');*/
 
     // Scale
-
+    Route::get('/escala', [ScaleController::class, 'index'])->name('scale.index');
 });
 
 // Rotas que SÓ o LIDER e o ADMIN podem ver
@@ -72,6 +73,9 @@ Route::middleware(['auth', 'role:lider'])->group(function () {
     Route::get('/musica/{id}/editar', [MusicController::class, 'edit'])->name('music.edit');
     Route::put('/musica/{id}', [MusicController::class, 'update'])->name('music.update');
     Route::delete('/musica/{id}', [MusicController::class, 'destroy'])->name('music.destroy');*/
+
+    // Scale
+    Route::resource('scale', ScaleController::class);
 });
 
 // Rotas que SÓ o ADMIN pode ver
