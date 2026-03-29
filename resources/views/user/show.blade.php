@@ -24,7 +24,10 @@
         <ul class="list-group">
             <li class="list-group-item"><strong>Nome:</strong> {{ $user->name }}</li>
             <li class="list-group-item"><strong>Email:</strong> {{ $user->email }}</li>
-            <li class="list-group-item"><strong>Função</strong> {{ $user->function }}</li>
+            <li class="list-group-item"><strong>Telefone:</strong> {{ $user->phone }}</li>
+            <li class="list-group-item"><strong>Data de Nascimento:</strong>
+                {{ \Carbon\Carbon::parse($user->birth_date)->format('d/m/Y') }}</li>
+            <li class="list-group-item"><strong>Função:</strong> {{ $user->function }}</li>
         </ul><br>
 
 

@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container mt-4">
-        <h2><i class="bi bi-people"></i> Lista de Membros</h2>
+        <h2><i class="bi bi-people"></i> Lista de Membros</h2><br>
         <hr class="main-divider">
         <br>
 
@@ -21,7 +21,7 @@
                     {{-- Adicionamos a classe 'user-row' e o atributo com a rota --}}
                     <tr class="user-row" data-href="{{ route('user.show', $user->id) }}" style="cursor: pointer;">
                         <td>{{ $user->name }}</td>
-                        <td>{{ $user->function ?? '--' }}</td>
+                        <td>{{ $user->function }}</td>
                     </tr>
                 @endforeach
             </tbody>

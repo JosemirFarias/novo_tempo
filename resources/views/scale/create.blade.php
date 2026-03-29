@@ -61,7 +61,7 @@
                                         value="{{ $user->id }}">
                                 </td>
                                 <td>{{ $user->name }}</td>
-                                <td>{{ $user->function ?? 'Não definida' }}</td>
+                                <td>{{ $user->function }}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -42,8 +42,7 @@
                                 @foreach ($members as $item)
                                     <tr>
                                         <td>{{ $item->user->name }}</td>
-                                        {{-- Altere 'function' para o nome da coluna real no seu banco --}}
-                                        <td>---</td>
+                                        <td>{{ $item->user->function }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

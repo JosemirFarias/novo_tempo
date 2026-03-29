@@ -12,6 +12,17 @@ class HomeController extends Controller
         $musicWeek = Music::where('week_list', true)->get();
         $warnings = Warning::latest()->get();
 
-        return view('home', compact('musicWeek', 'warnings'));
+        $nextDate = \App\Models\Scale::where('date', '>=', now()->startOfDay())
+            ->orderBy('date', 'asc')
+            ->value('date');
+
+        $nextScaleMembers = [];
+        if ($nextDate) {
+            $nextScaleMembers = \App\Models\Scale::with('user')
+                ->where('date', $nextDate)
+                ->get();
+        }
+
+        return view('home', compact('musicWeek', 'warnings', 'nextScaleMembers', 'nextDate'));
     }
 }
