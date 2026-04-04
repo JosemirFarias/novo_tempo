@@ -32,9 +32,9 @@ class MusicController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'version' => 'required|string|max:255',
+            'youtube_url' => 'nullable|url',
             'lyrics' => 'nullable|required_without:lyrics_notes|string',
             'lyrics_notes' => 'nullable|required_without:lyrics|string',
-            'youtube_url' => 'nullable|url',
         ]);
 
         Music::create($request->all());
@@ -98,6 +98,7 @@ class MusicController extends Controller
         $request->validate([
             'title' => 'required|string',
             'version' => 'required|string',
+            'youtube_url' => 'nullable|url',
             'lyrics' => 'nullable|required_without:lyrics_notes|string',
             'lyrics_notes' => 'nullable|required_without:lyrics|string',
         ]);
