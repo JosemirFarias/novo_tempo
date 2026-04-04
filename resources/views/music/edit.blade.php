@@ -23,6 +23,13 @@
             </div>
 
             <div class="mb-3">
+                <label for="youtube_url" class="form-label">Link do YouTube</label>
+                <input type="url" name="youtube_url" id="youtube_url" class="form-control"
+                    value="{{ old('youtube_url', $music->youtube_url) }}" placeholder="https://www.youtube.com/watch?v=...">
+                <small class="text-muted">Para remover o áudio, basta apagar o link e salvar.</small>
+            </div>
+
+            <div class="mb-3">
                 <label for="lyrics" class="form-label">Letra da Música</label>
                 <textarea name="lyrics" id="lyrics" class="form-control" rows="30">{{ old('lyrics', $music->lyrics ?? '') }}</textarea>
             </div>
@@ -33,11 +40,16 @@
             </div>
 
             <div class="text-end">
+                <a href="{{ route('music.index') }}" class="btn btn-danger">
+                    <i class="bi bi-arrow-left"></i> Cancelar
+                </a>
+
                 <button type="submit" class="btn btn-success">
                     <i class="bi bi-save"></i> Salvar Música
                 </button>
             </div>
         </form>
+
     </div>
 
 @endsection

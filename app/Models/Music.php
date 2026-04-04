@@ -10,6 +10,7 @@ class Music extends Model
         'title',
         'version',
         'lyrics',
-        'lyrics_notes'
+        'lyrics_notes',
+        'youtube_url',
     ];
 }

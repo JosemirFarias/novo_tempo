@@ -32,8 +32,9 @@ class MusicController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'version' => 'required|string|max:255',
-            'lyrics' => 'required|string',
-            'lyrics_notes' => 'required|string',
+            'lyrics' => 'nullable|required_without:lyrics_notes|string',
+            'lyrics_notes' => 'nullable|required_without:lyrics|string',
+            'youtube_url' => 'nullable|url',
         ]);
 
         Music::create($request->all());
@@ -95,10 +96,10 @@ class MusicController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'title' => 'required',
-            'version' => 'required',
-            'lyrics' => 'required',
-            'lyrics_notes' => 'required',
+            'title' => 'required|string',
+            'version' => 'required|string',
+            'lyrics' => 'nullable|required_without:lyrics_notes|string',
+            'lyrics_notes' => 'nullable|required_without:lyrics|string',
         ]);
 
         $music = Music::findOrFail($id);
