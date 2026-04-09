@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container mt-4">
-        <h2>{{ $music->title }} - {{ $music->version }}</h2>
+        <h2><strong>{{ $music->title }} - {{ $music->version }}</strong></h2>
         <hr class="main-divider">
 
         <!-- Exibir o conteúdo escolhido -->
@@ -30,14 +30,19 @@
 
         </div>
 
-        <form action="{{ route('music.destroy', $music->id) }}" method="POST"
-            onsubmit="return confirm('Deseja excluir essa música?')" class="m-0 mt-1">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-danger">
-                <i class="bi bi-trash3"></i> Excluir
-            </button>
-        </form>
+        @if (auth()->user()->role === 'lider' || auth()->user()->role === 'admin')
+            <form action="{{ route('music.destroy', $music->id) }}" method="POST"
+                onsubmit="return confirm('Deseja excluir essa música?')" class="m-0 mt-1">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger">
+                    <i class="bi bi-trash3"></i> Excluir
+                </button>
+            </form>
+        @endif
+
+        <a href="{{ route('music.index') }}" class="btn btn-primary">
+            <i class="bi bi-arrow-left"></i> Voltar</a>
 
     </div>
 @endsection

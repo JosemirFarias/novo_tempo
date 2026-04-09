@@ -13,19 +13,25 @@
         </div>
         <pre>{{ $suggestions->content }}</pre>
 
-        <form action="{{ route('suggestion.destroy', $suggestions->id) }}" method="POST"
-            onsubmit="return confirm('Deseja excluir a mensagem?')" class="m-0 mt-1">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-danger mt-4">
-                <i class="bi bi-trash3"></i> Excluir
-            </button>
-        </form>
+        <div class="d-flex justify-content-end align-items-center gap-2 mt-4">
 
-        <a href="{{ route('suggestion.edit', $suggestions->id) }}"><button type="submit" class="btn btn-warning mt-4">
+            <a href="{{ route('suggestion.index') }}" class="btn btn-primary">
+                <i class="bi bi-arrow-left"></i> Voltar</a>
+
+            <a href="{{ route('suggestion.edit', $suggestions->id) }}" class="btn btn-warning">
                 <i class="bi bi-pencil"></i> Editar
-            </button>
-        </a>
+            </a>
+
+            <form action="{{ route('suggestion.destroy', $suggestions->id) }}" method="POST"
+                onsubmit="return confirm('Deseja excluir a mensagem?')" class="m-0">
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger">
+                    <i class="bi bi-trash3"></i> Excluir
+                </button>
+            </form>
+
+        </div>
     </div>
 
 @endsection

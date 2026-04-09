@@ -42,7 +42,9 @@
 
             <thead>
                 <tr>
-                    <th>Selecionar</th>
+                    @if (auth()->user()->role === 'lider' || auth()->user()->role === 'admin')
+                        <th>Selecionar</th>
+                    @endif
                     <th>Título</th>
                     <th>Versão</th>
                     <th>Opções</th>
@@ -51,9 +53,11 @@
             <tbody>
                 @foreach ($musics as $music)
                     <tr>
-                        <td>
-                            <input type="checkbox" name="musics[]" value="{{ $music->id }}">
-                        </td>
+                        @if (auth()->user()->role === 'lider' || auth()->user()->role === 'admin')
+                            <td>
+                                <input type="checkbox" name="musics[]" value="{{ $music->id }}">
+                            </td>
+                        @endif
                         <td>{{ $music->title }}</td>
                         <td>{{ $music->version }}</td>
                         <td>
@@ -78,9 +82,12 @@
                                             <i class="bi bi-play-slash"></i> Sem Áudio
                                         </span>
                                     @endif
-                                    <a href="{{ route('music.edit', $music->id) }}" class="dropdown-item text-warning"><i
-                                            class="bi bi-pencil"></i>
-                                        Editar</a>
+
+                                    @if (auth()->user()->role === 'lider' || auth()->user()->role === 'admin')
+                                        <a href="{{ route('music.edit', $music->id) }}"
+                                            class="dropdown-item text-warning"><i class="bi bi-pencil"></i>
+                                            Editar</a>
+                                    @endif
                                 </div>
                             </details>
                         </td>

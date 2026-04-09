@@ -23,6 +23,9 @@
             </div>
 
             <div class="text-end">
+                <a href="{{ route('suggestion.show', $suggestions->id) }}" class="btn btn-danger">
+                    <i class="bi bi-arrow-left"></i> Cancelar
+                </a>
                 <button type="submit" class="btn btn-success">
                     <i class="bi bi-save"></i> Enviar Sugestão
                 </button>
